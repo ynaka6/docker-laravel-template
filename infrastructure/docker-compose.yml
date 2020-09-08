@@ -25,3 +25,8 @@ services:
       - db-store:/var/lib/mysql
     ports:
       - ${MYSQL_PORT}:3306
+
+  selenium:
+      image: selenium/standalone-chrome
+      ports:
+        - 4444:4444
