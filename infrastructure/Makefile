@@ -71,6 +71,16 @@ cache:
 	@make optimize
 cache-clear:
 	@make optimize-clear
+npm:
+	docker-compose exec web npm
+npm-insall:
+	docker-compose exec web npm install
+npm-dev:
+	docker-compose exec web npm run dev
+npm-watch:
+	docker-compose exec web npm run watch
+npm-prod:
+	docker-compose exec web npm run prod
 yarn:
 	docker-compose exec web yarn
 yarn-dev:
@@ -92,3 +102,16 @@ ide-helper:
 	docker-compose exec app php artisan ide-helper:generate
 	docker-compose exec app php artisan ide-helper:meta
 	docker-compose exec app php artisan ide-helper:models --nowrite
+
+init-react-spa:
+	docker-compose exec web npm install --save-dev react react-dom react-router react-router-dom
+
+init-react-ts-spa:
+	docker-compose exec web npm install --save-dev typescript
+	docker-compose exec web npm install --save-dev react react-dom react-router react-router-dom @types/react @types/react-dom  @types/react-router @types/react-router-dom
+
+
+# laravel/ui 
+ui-react:
+	docker-compose exec app composer require laravel/ui
+	docker-compose exec app php artisan ui react --auth
